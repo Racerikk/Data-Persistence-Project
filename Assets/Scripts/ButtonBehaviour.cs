@@ -13,6 +13,7 @@ public class ButtonBehaviour : MonoBehaviour
 
     public void CloseGame()
     {
+        DataManager.instance.SaveDataMethod();
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
 #else
