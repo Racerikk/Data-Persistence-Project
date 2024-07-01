@@ -75,6 +75,7 @@ public class MainManager : MonoBehaviour
         if(m_Points > DataManager.instance.highScore)
         {
             DataManager.instance.highScore = m_Points;
+            DataManager.instance.highestScorerName = DataManager.instance.playerName;
         }
     }
 }

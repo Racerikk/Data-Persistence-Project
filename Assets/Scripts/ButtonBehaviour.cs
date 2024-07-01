@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,7 +9,14 @@ public class ButtonBehaviour : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            DataManager.instance.playerName = GameObject.Find("PlayerNameText").GetComponent<TextMeshProUGUI>().text;
+        }
+        if(GameObject.Find("PlayerNameText").GetComponent<TextMeshProUGUI>().text != "")
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
     public void CloseGame()
@@ -24,5 +32,11 @@ public class ButtonBehaviour : MonoBehaviour
     public void LoadMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void WipeScoreboard()
+    {
+        DataManager.instance.highestScorerName = null;
+        DataManager.instance.highScore = 0;
     }
 }

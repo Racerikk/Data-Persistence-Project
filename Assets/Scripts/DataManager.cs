@@ -8,6 +8,8 @@ public class DataManager : MonoBehaviour
     public static DataManager instance;
 
     public int highScore;
+    public string highestScorerName;
+    public string playerName;
     void Awake()
     {
         LoadDataMethod();
@@ -21,19 +23,23 @@ public class DataManager : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(highScore);
+        //Debug.Log(highScore);
+        //Debug.Log(highestScorerName);
+        Debug.Log(playerName);
     }
 
     [System.Serializable]
     class SaveData
     {
         public int highScore;
+        public string playerName;
     }
 
     public void SaveDataMethod()
     {
         SaveData data = new SaveData();
         data.highScore = highScore;
+        data.playerName = highestScorerName;
 
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/savedata.json", json);
@@ -48,6 +54,8 @@ public class DataManager : MonoBehaviour
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
             highScore = data.highScore;
+            highestScorerName = data.playerName;
+            
         }
     }
 }
