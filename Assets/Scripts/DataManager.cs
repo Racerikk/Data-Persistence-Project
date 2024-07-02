@@ -21,12 +21,6 @@ public class DataManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
     }
-    private void Update()
-    {
-        //Debug.Log(highScore);
-        //Debug.Log(highestScorerName);
-        Debug.Log(playerName);
-    }
 
     [System.Serializable]
     class SaveData

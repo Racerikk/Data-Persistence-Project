@@ -13,9 +13,13 @@ public class ButtonBehaviour : MonoBehaviour
         {
             DataManager.instance.playerName = GameObject.Find("PlayerNameText").GetComponent<TextMeshProUGUI>().text;
         }
-        if(GameObject.Find("PlayerNameText").GetComponent<TextMeshProUGUI>().text != "")
+        if(GameObject.Find("PlayerNameText").GetComponent<TextMeshProUGUI>().text.Length >= 4)
         {
             SceneManager.LoadScene(1);
+        }
+        else
+        {
+            MenuManager.instance.DisplayAlertMessage("Your name needs to be atleast 3 characters long!");
         }
     }
 
